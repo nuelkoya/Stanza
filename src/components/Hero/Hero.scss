@@ -1,0 +1,27 @@
+.hero{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+
+    h1{
+        color: #ffbf69;
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+
+        @media (max-width: 450px) {
+            font-size: 2rem;
+        }
+    }
+
+    p{
+        margin-top: 0;
+        font-style: italic;
+        font-size: 1.5rem;
+        color: #588157;
+        @media (max-width: 450px) {
+            font-size: 1.2rem;
+        }
+    }
+}
