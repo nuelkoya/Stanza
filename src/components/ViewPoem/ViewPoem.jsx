@@ -10,12 +10,15 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import { BsTrash } from "react-icons/bs";
 import { Link, useNavigate } from 'react-router-dom';
 import CommentCard from '../CommentCard/CommentCard';
+import anonymous from "../../../public/anonymous.jpg"
 
 
 
 const ViewPoem = () => {
 
   const [comment, setComment] = useState('')
+  const [hasProfilePic, setHasProfilePic] = useState()
+  const [url, setUrl] = useState()
   
   
 
@@ -55,6 +58,22 @@ const ViewPoem = () => {
     
   },[])
 
+    let value = profilePicForPoem.find((url) => {
+      return url.includes(poemToUpdate.data.userId)
+    })
+
+  
+
+    useEffect(() =>{
+        if(value){
+            setHasProfilePic(true)
+            setUrl(value)
+        } else{
+            setHasProfilePic(false)
+        }
+        
+
+    },[value]) 
 
  
   let answer
@@ -130,11 +149,15 @@ const ViewPoem = () => {
           <div className="viewPoemTop">
               <h1>{poemToUpdate.data.title}</h1>
               {
-                profilePicForPoem.map((url, index) => {
-                  if (url.includes(poemToUpdate.data.userId)){
-                      return <img src={url} alt="" key={index}/>
-                  }
-                })
+                hasProfilePic 
+                ?
+                (
+                <img src={url} alt=""/>)
+                
+                :
+                (
+                    <img src={anonymous} alt=""/>
+                )
               }
               
           </div>
