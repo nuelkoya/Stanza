@@ -17,8 +17,7 @@ import anonymous from "../../../public/anonymous.jpg"
 const ViewPoem = () => {
 
   const [comment, setComment] = useState('')
-  const [hasProfilePic, setHasProfilePic] = useState()
-  const [url, setUrl] = useState()
+  let isAnonymous = true
   
   
 
@@ -48,6 +47,14 @@ const ViewPoem = () => {
     }
   })
 
+  useEffect(() => {
+    
+    window.scroll({
+        top: 0,
+        behavior: "instant",
+      })
+    
+  },[])
   
   useEffect(()=>{
     getPoemToUpdate(id)
@@ -149,15 +156,16 @@ const ViewPoem = () => {
           <div className="viewPoemTop">
               <h1>{poemToUpdate.data.title}</h1>
               {
-                hasProfilePic 
-                ?
-                (
-                <img src={url} alt=""/>)
-                
-                :
-                (
-                    <img src={anonymous} alt=""/>
-                )
+                profilePicForPoem.map((url, index) => {
+                  if (url.includes(poemToUpdate.data.userId)){
+                      isAnonymous= false
+                      return <img src={url} alt="" key={index}/>
+                  }
+                  if(index === profilePicForPoem.length - 1 && isAnonymous){
+                    return <img src={anonymous} alt="" key={index}/>
+                  }
+
+                })
               }
               
           </div>

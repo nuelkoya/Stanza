@@ -16,6 +16,14 @@ const UpdatePoem = () => {
     
   },[])
 
+  useEffect(() => {
+    window.scroll({
+        top: 0,
+        behavior: "instant",
+      })
+    
+  },[])
+
 
   const [updatePoemTitle, setUpdatePoemTitle] = useState(poemToUpdate?.data.title)
   const [updatePoemContent, setUpdatePoemContent] = useState(poemToUpdate?.data.content)

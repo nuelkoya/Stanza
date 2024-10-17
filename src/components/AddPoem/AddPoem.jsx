@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import "./AddPoem.scss"
 import { StanzaContext } from '../../StanzaContext'
 import { useNavigate } from 'react-router';
@@ -15,6 +15,14 @@ const AddPoem = () => {
         e.preventDefault()
         navigate(-1)
     }
+
+    useEffect(() => {
+        window.scroll({
+            top: 0,
+            behavior: "instant",
+          })
+        
+    },[])
 
 
     const handleSubmit =   async (e) => {
