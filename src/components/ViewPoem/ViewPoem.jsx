@@ -65,22 +65,7 @@ const ViewPoem = () => {
     
   },[])
 
-    let value = profilePicForPoem.find((url) => {
-      return url.includes(poemToUpdate.data.userId)
-    })
-
-  
-
-    useEffect(() =>{
-        if(value){
-            setHasProfilePic(true)
-            setUrl(value)
-        } else{
-            setHasProfilePic(false)
-        }
-        
-
-    },[value]) 
+    
 
  
   let answer
